@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milan Sangeeth</title>
+<meta name="description" content="Milan Sangeeth — Automation & Robotics Engineer. PLC, embedded systems, industrial IoT, AGVs, computer vision and SolidWorks design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f6f3;
+    --surface: #ffffff;
+    --ink: #14181c;
+    --muted: #5a636c;
+    --line: #dfe2dc;
+    --grid: rgba(20, 24, 28, 0.05);
+    --accent: #e8590c;
+    --accent-soft: rgba(232, 89, 12, 0.1);
+    --sans: "Space Grotesk", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1215;
+      --surface: #161a1f;
+      --ink: #e9ecef;
+      --muted: #98a2ab;
+      --line: #262c33;
+      --grid: rgba(255, 255, 255, 0.035);
+      --accent: #ff8a3d;
+      --accent-soft: rgba(255, 138, 61, 0.12);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1215;
+    --surface: #161a1f;
+    --ink: #e9ecef;
+    --muted: #98a2ab;
+    --line: #262c33;
+    --grid: rgba(255, 255, 255, 0.035);
+    --accent: #ff8a3d;
+    --accent-soft: rgba(255, 138, 61, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-family: var(--mono); font-weight: 500; text-decoration: none; font-size: 15px; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 15px; transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  .theme-btn {
+    background: none; border: 1px solid var(--line); color: var(--ink);
+    width: 34px; height: 34px; border-radius: 8px; cursor: pointer; font-size: 15px;
+  }
+
+  /* Hero */
+  .hero { padding: 96px 0 80px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 300px; gap: 64px; align-items: center; }
+  .tag {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    letter-spacing: .04em; text-transform: uppercase; margin-bottom: 20px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #2fb344; box-shadow: 0 0 0 4px rgba(47,179,68,.18); }
+  h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lede { margin-top: 24px; color: var(--muted); font-size: 19px; max-width: 560px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+    border-radius: 10px; text-decoration: none; font-weight: 500; font-size: 15px;
+    border: 1px solid var(--line); background: var(--surface); transition: transform .15s, border-color .15s;
+  }
+  .btn:hover { transform: translateY(-2px); border-color: var(--ink); }
+  .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .photo {
+    position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--line); background: var(--surface);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo::after {
+    content: "HOMAGAMA, LK"; position: absolute; left: 12px; bottom: 12px;
+    font-family: var(--mono); font-size: 11px; padding: 4px 8px; border-radius: 6px;
+    background: rgba(15,18,21,.75); color: #fff; letter-spacing: .05em;
+  }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 64px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .stat { background: var(--surface); padding: 22px 24px; }
+  .stat b { display: block; font-size: 28px; letter-spacing: -0.02em; }
+  .stat span { color: var(--muted); font-size: 14px; }
+
+  /* Sections */
+  section { padding: 88px 0; border-top: 1px solid var(--line); }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 44px; }
+  .sec-num { font-family: var(--mono); font-size: 14px; color: var(--accent); }
+  h2 { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.02em; line-height: 1.15; }
+
+  /* Experience */
+  .job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px dashed var(--line); }
+  .job:last-child { border-bottom: none; }
+  .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 6px; }
+  .when .now { display: inline-block; margin-top: 8px; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; }
+  .job h3 { font-size: 22px; letter-spacing: -0.01em; }
+  .org { color: var(--muted); margin-bottom: 14px; }
+  ul.points { list-style: none; display: grid; gap: 8px; }
+  ul.points li { position: relative; padding-left: 22px; }
+  ul.points li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    padding: 28px; display: flex; flex-direction: column; transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .card.feature { grid-column: span 2; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .icon {
+    width: 44px; height: 44px; border-radius: 10px; background: var(--accent-soft);
+    color: var(--accent); display: grid; place-items: center;
+  }
+  .icon svg { width: 22px; height: 22px; }
+  .pnum { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .card h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: 16px; }
+  .card ul.points { margin-top: 14px; font-size: 15px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 20px; }
+  .chip {
+    font-family: var(--mono); font-size: 12px; padding: 4px 10px; border-radius: 6px;
+    border: 1px solid var(--line); color: var(--muted);
+  }
+  .outcome {
+    margin-top: 18px; padding: 12px 16px; border-left: 3px solid var(--accent);
+    background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 15px;
+  }
+
+  /* Project groups */
+  .group + .group { margin-top: 72px; }
+  .group-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px;
+    padding-bottom: 14px; margin-bottom: 24px; border-bottom: 2px solid var(--ink);
+  }
+  .group-org { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .group-meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .proj {
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: start;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px;
+  }
+  .proj + .proj { margin-top: 20px; }
+  .proj:nth-of-type(even) .gallery { order: 2; }
+  .proj-body { padding: 8px 8px 8px 0; display: flex; flex-direction: column; }
+  .proj-body.solo { grid-column: 1 / -1; padding: 8px; }
+  .proj-body h3 { font-size: 22px; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .proj-body > p { color: var(--muted); font-size: 16px; }
+  .proj-body ul.points { margin-top: 14px; font-size: 15px; }
+
+  .gallery { display: grid; gap: 8px; }
+  .gallery.g2 { grid-template-columns: 1fr 1fr; }
+  .gallery.g3, .gallery.g4 { grid-template-columns: 1fr 1fr; }
+  .gallery.g3 .big { grid-column: 1 / -1; }
+  .gallery.g4 { grid-template-columns: 1fr 1fr 1fr; }
+  .gallery.g4 .big { grid-column: 1 / -1; }
+  .gallery figure {
+    position: relative; overflow: hidden; border-radius: 10px; background: var(--bg);
+    aspect-ratio: 4 / 3; cursor: zoom-in;
+  }
+  .gallery.g2 figure { aspect-ratio: 3 / 4; }
+  .gallery .big { aspect-ratio: 16 / 10; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .gallery figure:hover img { transform: scale(1.04); }
+  .gallery figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 10px 8px;
+    background: linear-gradient(transparent, rgba(0,0,0,.72)); color: #fff;
+    font-family: var(--mono); font-size: 11px; line-height: 1.35;
+  }
+  .g-empty .placeholder {
+    aspect-ratio: 4 / 3; border: 2px dashed var(--line); border-radius: 10px;
+    display: grid; place-items: center; color: var(--muted); font-family: var(--mono); font-size: 13px;
+  }
+
+  .lightbox {
+    position: fixed; inset: 0; z-index: 50; background: rgba(8,10,12,.92);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; gap: 14px;
+  }
+  .lightbox[hidden] { display: none; }
+  .lightbox img { max-width: 100%; max-height: 82vh; border-radius: 8px; }
+  .lb-cap { color: #ddd; font-family: var(--mono); font-size: 13px; text-align: center; }
+  .lb-close {
+    position: absolute; top: 14px; right: 18px; background: none; border: none; color: #fff;
+    font-size: 36px; line-height: 1; cursor: pointer;
+  }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .skill h4 { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); margin-bottom: 14px; font-weight: 500; }
+  .skill .chips { padding-top: 0; }
+  .skill .chip { color: var(--ink); background: var(--bg); }
+
+  /* Education */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+  .box h4 { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 18px; font-weight: 500; }
+  .entry + .entry { margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--line); }
+  .entry b { display: block; font-size: 17px; }
+  .entry span { color: var(--muted); font-size: 15px; }
+  .entry small { display: block; font-family: var(--mono); font-size: 12px; color: var(--accent); margin-top: 4px; }
+
+  /* Contact */
+  .contact { text-align: center; padding: 110px 0; }
+  .contact h2 { font-size: clamp(32px, 5vw, 52px); }
+  .contact p { color: var(--muted); max-width: 520px; margin: 18px auto 0; }
+  .contact .cta { justify-content: center; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .photo { max-width: 260px; order: -1; }
+    .two { grid-template-columns: 1fr; }
+    .proj { grid-template-columns: 1fr; gap: 20px; }
+    .proj:nth-of-type(even) .gallery { order: 0; }
+    .proj-body { padding: 0 4px 4px; }
+    .skills { grid-template-columns: 1fr 1fr; }
+    .job { grid-template-columns: 1fr; gap: 8px; }
+    .nav-links a:not(.keep) { display: none; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .hero { padding: 56px 0 56px; }
+    section { padding: 64px 0; }
+    .skills { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .proj { padding: 14px; }
+    .gallery.g4 { grid-template-columns: 1fr 1fr; }
+    .gallery.g4 .big { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">milan<span>.</span>sangeeth</a>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="keep">Contact</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◐</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="tag">Junior Research Associate @ SLIBTEC</div>
+      <h1>Milan Sangeeth.<br>I build machines that <em>think and move.</em></h1>
+      <p class="lede">I'm an Automation &amp; Robotics Engineer who has taken projects from concept to commissioning: PLC-controlled production lines, autonomous AGVs, embedded firmware, industrial IoT and machine vision.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View my work →</a>
+        <a class="btn" href="mailto:sangeethmilan206@gmail.com">Get in touch</a>
+        <a class="btn" href="Resume_Milan_Sangeeth.pdf" download>Download CV</a>
+      </div>
+    </div>
+    <div class="photo"><img src="profile.jpg" alt="Portrait of Milan Sangeeth"></div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>BET (Hons)</b><span>Industrial Automation &amp; Robotics, IESL accredited</span></div>
+      <div class="stat"><b>5+</b><span>End-to-end automation &amp; robotics projects</span></div>
+      <div class="stat"><b>3</b><span>PLC platforms in production: Haiwell, Omron, Xinjie</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Experience</h2></div>
+
+    <div class="job reveal">
+      <div class="when">Dec 2025 — Present<br><span class="now">Current</span></div>
+      <div>
+        <h3>Junior Research Associate</h3>
+        <div class="org">Sri Lanka Institute of Biotechnology (SLIBTEC)</div>
+        <ul class="points">
+          <li>Leading R&amp;D project execution in robotics and industrial automation</li>
+          <li>Designing and developing Automated Guided Vehicles (AGVs) for industrial applications</li>
+          <li>Developing embedded firmware for custom robotics hardware (ESP32 / STM32)</li>
+          <li>Building and validating prototypes through structured testing and evaluation protocols</li>
+          <li>Writing technical specifications and coordinating with vendors and external stakeholders</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="when">Aug 2024 — Feb 2025</div>
+      <div>
+        <h3>Industrial Automation Engineer</h3>
+        <div class="org">Atlas Axillia · Peliyagoda</div>
+        <ul class="points">
+          <li>Programmed and commissioned PLCs for machine control and process automation</li>
+          <li>Built HMI interfaces and integrated automation solutions on Haiwell platforms</li>
+          <li>Designed mechanical components and assemblies in SolidWorks for machine upgrades</li>
+          <li>Applied Lean Manufacturing and Kaizen to optimise processes and reduce downtime</li>
+          <li>Troubleshooting, preventive maintenance and root cause analysis to improve equipment reliability</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Projects</h2></div>
+
+    <!-- ===== SLIBTEC ===== -->
+    <div class="group reveal">
+      <div class="group-head">
+        <span class="group-org">SLIBTEC</span>
+        <span class="group-meta">Junior Research Associate · Dec 2025 — Present</span>
+      </div>
+      <article class="proj">
+        <div class="gallery g-empty">
+          <!-- TODO: add SLIBTEC photos to the images folder, then replace the placeholder with e.g.
+          <figure><img src="images/slibtec-agv.jpg" alt="AGV prototype"><figcaption>AGV prototype</figcaption></figure> -->
+          <div class="placeholder">Photos coming soon</div>
+        </div>
+        <div class="proj-body">
+          <h3>AGV &amp; Robotics R&amp;D</h3>
+          <p>I'm leading applied R&amp;D on Automated Guided Vehicles and custom robotics hardware, taking prototypes from specification to validated builds.</p>
+          <ul class="points">
+            <li>AGV design: sensor-based navigation, obstacle detection, closed-loop motor control</li>
+            <li>Embedded firmware for custom hardware on ESP32 / STM32</li>
+            <li>Structured prototype testing, evaluation protocols and technical specs</li>
+            <li>Vendor and stakeholder coordination</li>
+          </ul>
+          <div class="chips"><span class="chip">ESP32 / STM32</span><span class="chip">ROS2</span><span class="chip">Control Systems</span><span class="chip">Prototyping</span></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== ATLAS ===== -->
+    <div class="group reveal">
+      <div class="group-head">
+        <span class="group-org">Atlas Axillia</span>
+        <span class="group-meta">Industrial Automation Engineer · Aug 2024 — Feb 2025</span>
+      </div>
+
+      <article class="proj">
+        <div class="proj-body solo">
+          <h3>Automated Material Handling &amp; Loading System</h3>
+          <p>I redesigned a large industrial 3-axis gantry and synchronised it with an AGV so that product transport and loading run as one automated line.</p>
+          <ul class="points">
+            <li>Redesigned and optimised the gantry's mechanical structure in SolidWorks</li>
+            <li>Developed PLC logic for synchronised AGV and gantry operation</li>
+            <li>Servo drive integration, sensors, actuators and industrial comms</li>
+            <li>Commissioning, testing, troubleshooting and optimisation</li>
+          </ul>
+          <div class="outcome"><b>Outcome:</b> The synchronised system streamlined product transport and loading on the manufacturing floor.</div>
+          <div class="chips"><span class="chip">PLC</span><span class="chip">Servo / Motion</span><span class="chip">AGV</span><span class="chip">SolidWorks</span></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body solo">
+          <h3>HMI Production Tracking &amp; OEE Monitoring</h3>
+          <p>I built real-time production and Overall Equipment Effectiveness screens for operators and supervisors.</p>
+          <ul class="points">
+            <li>OEE calculations: availability, performance, quality and overall OEE</li>
+            <li>Downtime tracking by loss category, plus production reporting</li>
+            <li>PLC data acquisition connected to HMI visualisation</li>
+          </ul>
+          <div class="outcome"><b>Outcome:</b> Production performance, downtime and machine utilisation became visible in real time, supporting continuous improvement.</div>
+          <div class="chips"><span class="chip">Haiwell HMI</span><span class="chip">PLC</span><span class="chip">OEE Analytics</span></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body solo">
+          <h3>Industrial Real-Time Data Logger</h3>
+          <p>An Industrial IoT platform that streams PLC data into MySQL for live production monitoring.</p>
+          <ul class="points">
+            <li>PLC integration through Node-RED</li>
+            <li>Production data logged to a MySQL database</li>
+            <li>Dashboards and automated performance reports</li>
+          </ul>
+          <div class="chips"><span class="chip">Node-RED</span><span class="chip">MQTT</span><span class="chip">MySQL</span><span class="chip">PLC</span></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body solo">
+          <h3>Industrial Power Monitoring System</h3>
+          <p>I connected power analysers to PLCs and added custom energy analysis and an operator interface.</p>
+          <ul class="points">
+            <li>Power analyser and PLC integration</li>
+            <li>Custom energy analysis algorithms</li>
+            <li>Operator interface on a Haiwell HMI</li>
+          </ul>
+          <div class="chips"><span class="chip">PLC</span><span class="chip">Haiwell</span><span class="chip">Power Analysis</span></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== Academic / other ===== -->
+    <div class="group reveal">
+      <div class="group-head">
+        <span class="group-org">Academic &amp; independent</span>
+        <span class="group-meta">University of Kelaniya</span>
+      </div>
+
+      <article class="proj">
+        <div class="gallery g4">
+          <figure class="big"><img src="images/sorter-prototype.jpg" alt="Plastic sorting machine prototype" loading="lazy"><figcaption>Final prototype</figcaption></figure>
+          <figure><img src="images/sorter-cad.png" alt="SolidWorks model of the sorting machine" loading="lazy"><figcaption>SolidWorks 3D model</figcaption></figure>
+          <figure><img src="images/sorter-test-setup.jpg" alt="Testing setup with oscilloscope and laptop" loading="lazy"><figcaption>Sensor testing setup</figcaption></figure>
+          <figure><img src="images/sorter-nir-signal.jpg" alt="Raw NIR sensor signal plotted on a laptop" loading="lazy"><figcaption>Raw NIR sensor signal</figcaption></figure>
+        </div>
+        <div class="proj-body">
+          <h3>Intelligent Plastic Sorting Machine</h3>
+          <p>This machine identifies and separates plastic types using a custom Near-Infrared (NIR) spectroscopy sensor and machine-learning classification.</p>
+          <ul class="points">
+            <li>Designed the custom NIR sensing system and signal pipeline</li>
+            <li>Built Python ML models for multi-type polymer identification</li>
+            <li>Designed the sorting mechanism in SolidWorks and integrated hardware with software</li>
+          </ul>
+          <div class="outcome"><b>Outcome:</b> Multiple plastic types were identified and classified for automated sorting.</div>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Machine Learning</span><span class="chip">NIR Spectroscopy</span><span class="chip">SolidWorks</span></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-body solo">
+          <h3>Computer Vision Inspection System</h3>
+          <p>Machine-vision quality inspection connected directly to production PLCs.</p>
+          <ul class="points">
+            <li>Edge detection, object recognition and defect identification</li>
+            <li>Integrated with Haiwell, Omron and Xinjie PLCs</li>
+          </ul>
+          <div class="chips"><span class="chip">OpenCV</span><span class="chip">TensorFlow</span><span class="chip">Python</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" aria-label="Close">×</button>
+  <img alt="">
+  <p class="lb-cap"></p>
+</div>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Technical toolkit</h2></div>
+    <div class="skills">
+      <div class="skill reveal"><h4>Automation &amp; Control</h4><div class="chips"><span class="chip">PLC Programming</span><span class="chip">Haiwell</span><span class="chip">Omron</span><span class="chip">Xinjie</span><span class="chip">HMI / SCADA</span><span class="chip">VFD &amp; Servo</span><span class="chip">Motion Control</span></div></div>
+      <div class="skill reveal"><h4>Robotics &amp; Embedded</h4><div class="chips"><span class="chip">ROS / ROS2</span><span class="chip">ESP32</span><span class="chip">STM32</span><span class="chip">Arduino</span><span class="chip">Embedded C/C++</span><span class="chip">Firmware</span><span class="chip">Sensor Integration</span></div></div>
+      <div class="skill reveal"><h4>Industrial IoT &amp; Data</h4><div class="chips"><span class="chip">Node-RED</span><span class="chip">MQTT</span><span class="chip">MySQL</span><span class="chip">Firebase</span><span class="chip">Real-Time Dashboards</span></div></div>
+      <div class="skill reveal"><h4>Software &amp; AI</h4><div class="chips"><span class="chip">Python</span><span class="chip">C / C++</span><span class="chip">OpenCV</span><span class="chip">TensorFlow</span><span class="chip">Machine Learning</span></div></div>
+      <div class="skill reveal"><h4>Mechanical Design</h4><div class="chips"><span class="chip">SolidWorks</span><span class="chip">3D CAD Modelling</span><span class="chip">Assemblies</span><span class="chip">Motion Studies</span><span class="chip">Rapid Prototyping</span></div></div>
+      <div class="skill reveal"><h4>Operations</h4><div class="chips"><span class="chip">Lean &amp; Kaizen</span><span class="chip">Root Cause Analysis</span><span class="chip">Preventive Maintenance</span><span class="chip">Tech Specs</span><span class="chip">Vendor Coordination</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Education &amp; leadership</h2></div>
+    <div class="two">
+      <div class="box reveal">
+        <h4>Education</h4>
+        <div class="entry"><b>BET (Hons) in Industrial Automation &amp; Robotics</b><span>University of Kelaniya · IESL accredited</span><small>2021 — 2025</small></div>
+        <div class="entry"><b>Certificate in Project Management</b><span>University of Moratuwa</span><small>2026 — Present</small></div>
+      </div>
+      <div class="box reveal">
+        <h4>Leadership &amp; Training</h4>
+        <div class="entry"><b>President, Inventor's Club</b><span>University of Kelaniya</span><small>2022 — 2024</small></div>
+        <div class="entry"><b>Team Building &amp; Leadership Programme</b><span>MAS Thulhiriya</span><small>2025</small></div>
+        <div class="entry"><b>Awareness &amp; Capacity-Building Programme</b><span>National Innovation Agency / Ministry of Science &amp; Technology</span><small>2026</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's build something.</h2>
+    <p>I'm open to roles and collaborations in industrial automation, robotics and embedded systems.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:sangeethmilan206@gmail.com">sangeethmilan206@gmail.com</a>
+      <a class="btn" href="tel:+94770631847">+94 77 063 1847</a>
+      <a class="btn" href="https://www.linkedin.com/in/milan-sangeeth-662442219" target="_blank" rel="noopener">LinkedIn</a>
+
+      <a class="btn" href="https://github.com/msgeeth" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Milan Sangeeth</span>
+    <span>Homagama, Sri Lanka</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    const dark = root.dataset.theme
+      ? root.dataset.theme === "dark"
+      : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  const lb = document.getElementById("lightbox");
+  const lbImg = lb.querySelector("img");
+  const lbCap = lb.querySelector(".lb-cap");
+  document.querySelectorAll(".gallery figure").forEach(fig => {
+    fig.addEventListener("click", () => {
+      const img = fig.querySelector("img");
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = fig.querySelector("figcaption")?.textContent || "";
+      lb.hidden = false;
+    });
+  });
+  const closeLb = () => { lb.hidden = true; lbImg.src = ""; };
+  lb.addEventListener("click", e => { if (e.target !== lbImg) closeLb(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+</script>
+</body>
+</html>
