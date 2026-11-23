@@ -216,6 +216,18 @@
     font-size: 36px; line-height: 1; cursor: pointer;
   }
 
+  /* Research */
+  .pub {
+    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+    border-radius: 14px; padding: 28px;
+  }
+  .pub-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .pub-type { color: var(--accent); text-transform: uppercase; letter-spacing: .05em; }
+  .pub h3 { font-size: clamp(19px, 2.4vw, 23px); line-height: 1.3; letter-spacing: -0.01em; }
+  .pub-venue { color: var(--muted); margin-top: 8px; }
+  .pub .chips { padding-top: 16px; }
+  .pub .btn { margin-top: 20px; }
+
   /* Skills */
   .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .skill { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
@@ -277,6 +289,7 @@
     <div class="nav-links">
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
       <a href="#skills">Skills</a>
       <a href="#contact" class="keep">Contact</a>
       <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◐</button>
@@ -526,7 +539,7 @@
             <li>Built Python ML models for multi-type polymer identification</li>
             <li>Designed the sorting mechanism in SolidWorks and integrated hardware with software</li>
           </ul>
-          <div class="outcome"><b>Outcome:</b> Multiple plastic types were identified and classified for automated sorting.</div>
+          <div class="outcome"><b>Outcome:</b> Multiple plastic types were identified and classified for automated sorting. The work was presented at the FCT Student Research Symposium 2025 (<a href="#research">see Research</a>).</div>
           <div class="chips"><span class="chip">Python</span><span class="chip">Machine Learning</span><span class="chip">NIR Spectroscopy</span><span class="chip">SolidWorks</span></div>
         </div>
       </article>
@@ -555,9 +568,25 @@
   <p class="lb-cap"></p>
 </div>
 
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Research</h2></div>
+    <article class="pub reveal">
+      <div class="pub-meta">
+        <span class="pub-type">Symposium paper</span>
+        <span>10 Oct 2025</span>
+      </div>
+      <h3>Design and Development of a Low-Cost Intelligent Plastic Sorting Machine using NIR Spectroscopy and Machine Learning for SMEs</h3>
+      <p class="pub-venue">Faculty of Computing and Technology Student Research Symposium · University of Kelaniya</p>
+      <div class="chips"><span class="chip">NIR Spectroscopy</span><span class="chip">Machine Learning</span><span class="chip">Recycling</span><span class="chip">SMEs</span></div>
+      <a class="btn" href="https://heyzine.com/flip-book/f724a2976b.html#page/90" target="_blank" rel="noopener">Read in proceedings (p. 90) →</a>
+    </article>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Technical toolkit</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Technical toolkit</h2></div>
     <div class="skills">
       <div class="skill reveal"><h4>Automation &amp; Control</h4><div class="chips"><span class="chip">PLC Programming</span><span class="chip">Haiwell</span><span class="chip">Omron</span><span class="chip">Xinjie</span><span class="chip">HMI / SCADA</span><span class="chip">VFD &amp; Servo</span><span class="chip">Motion Control</span></div></div>
       <div class="skill reveal"><h4>Robotics &amp; Embedded</h4><div class="chips"><span class="chip">ROS / ROS2</span><span class="chip">ESP32</span><span class="chip">STM32</span><span class="chip">Arduino</span><span class="chip">Embedded C/C++</span><span class="chip">Firmware</span><span class="chip">Sensor Integration</span></div></div>
@@ -571,7 +600,7 @@
 
 <section id="education">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Education &amp; leadership</h2></div>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Education &amp; leadership</h2></div>
     <div class="two">
       <div class="box reveal">
         <h4>Education</h4>
