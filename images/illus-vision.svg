@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" font-family="JetBrains Mono, monospace">
+  <defs>
+    <pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#1d3042" stroke-width="1"/></pattern>
+  </defs>
+  <rect width="400" height="300" fill="#13202c"/><rect width="400" height="300" fill="url(#g)"/>
+  <g fill="none" stroke="#cfe3f5" stroke-width="2" stroke-linejoin="round">
+    <!-- camera mount -->
+    <path d="M200 30 V70"/><rect x="178" y="70" width="44" height="30" rx="4"/><circle cx="200" cy="106" r="8"/>
+    <!-- conveyor -->
+    <rect x="30" y="220" width="340" height="18" rx="9"/>
+    <circle cx="40" cy="229" r="5"/><circle cx="360" cy="229" r="5"/>
+    <!-- parts -->
+    <rect x="70" y="188" width="44" height="32" rx="3"/>
+    <rect x="178" y="188" width="44" height="32" rx="3"/>
+    <rect x="286" y="188" width="44" height="32" rx="3"/>
+  </g>
+  <path d="M192 114 L150 186 H250 L208 114 Z" fill="#5fb3ff" fill-opacity=".12" stroke="#5fb3ff" stroke-dasharray="4 4"/>
+  <!-- detection boxes -->
+  <rect x="172" y="182" width="56" height="44" fill="none" stroke="#ff8a3d" stroke-width="2"/>
+  <rect x="172" y="170" width="56" height="12" fill="#ff8a3d"/>
+  <text x="200" y="179" fill="#13202c" font-size="8" text-anchor="middle">DEFECT 0.94</text>
+  <path d="M196 196 l6 8 -4 6" fill="none" stroke="#ff8a3d" stroke-width="1.5"/>
+  <rect x="64" y="182" width="56" height="44" fill="none" stroke="#4cc38a" stroke-width="1.5"/>
+  <text x="92" y="178" fill="#4cc38a" font-size="8" text-anchor="middle">OK</text>
+  <text x="30" y="266" fill="#cfe3f5" font-size="10">OpenCV · TensorFlow → PLC reject signal</text>
+  <text x="30" y="40" fill="#cfe3f5" font-size="11">VISION INSPECTION</text>
+  <text x="388" y="290" fill="#5b7a95" font-size="9" text-anchor="end">ILLUSTRATION</text>
+</svg>
